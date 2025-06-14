@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package meetingadvisor;
+
+service MeetingAdvisor {
+    rpc GenerateAdvice(Transcript) returns (Advice);
+}
+
+message Transcript {
+    string content = 1;
+}
+
+message Advice {
+    string content = 1;
+}
