@@ -1,0 +1,7 @@
+langchain
+langchain-google-vertexai
+grpcio
+grpcio-tools
+mypy
+types-protobuf
+types-grpcio
