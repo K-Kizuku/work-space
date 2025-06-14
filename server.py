@@ -6,7 +6,9 @@ from concurrent import futures
 import advice_service_pb2 as pb2
 import advice_service_pb2_grpc as pb2_grpc
 from advisor import MeetingAdvisor
+
 from typing import Any
+
 
 
 class MeetingAdvisorServicer(pb2_grpc.MeetingAdvisorServicer):
@@ -16,6 +18,7 @@ class MeetingAdvisorServicer(pb2_grpc.MeetingAdvisorServicer):
         self.advisor = MeetingAdvisor()
 
     def GenerateAdvice(
+
         self, request: Any, context: grpc.ServicerContext
     ) -> Any:
         advice = self.advisor.generate_advice(request.content)
@@ -25,6 +28,12 @@ class MeetingAdvisorServicer(pb2_grpc.MeetingAdvisorServicer):
         else:
             # フォールバック（実際にはここには来ないはずだが型チェックのため）
             return type('Advice', (), {'content': advice})()
+
+ #       self, request: pb2.Transcript, context: grpc.ServicerContext
+  #  ) -> pb2.Advice:
+  #      advice = self.advisor.generate_advice(request.content)
+   #     return pb2.Advice(content=advice)
+
 
 
 def serve(port: int = 50051) -> None:

@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+
 # テスト用の簡易実装に置き換え（認証情報が不要）
 # from langchain_google_vertexai import VertexAI
+
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import Runnable
@@ -13,6 +15,12 @@ class MeetingAdvisor:
 
     def __init__(self, model: str = "gemini-pro") -> None:
         # 実際のLLMの代わりにモック関数を使用
+
+#    """Generate meeting advice using VertexAI via LangChain."""
+
+#    def __init__(self, model: str = "gemini-pro") -> None:
+#        self.llm = VertexAI(model_name=model)
+
         self.prompt = PromptTemplate(
             template=(
                 "You are a helpful assistant providing advice on meeting facilitation. "
@@ -31,3 +39,10 @@ class MeetingAdvisor:
 3. タイムラインについて合意を得ましょう：プロジェクトのタイムラインについて全員が同じ認識を持っていることを確認しましょう。
 4. 会議の最後に決定事項と次のステップをまとめましょう：混乱を防ぐために、会議の終わりに決定事項と次のステップを再確認しましょう。
 """
+
+ #       self.chain: Runnable[[str], str] = self.prompt | self.llm | StrOutputParser()
+
+ #   def generate_advice(self, transcript: str) -> str:
+  #      """Return advice for the provided transcript."""
+  #      return self.chain.invoke({"transcript": transcript})
+
